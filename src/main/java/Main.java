@@ -11,7 +11,6 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
-//import jdk.javadoc.internal.doclets.formats.html.markup.Text;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -40,7 +39,14 @@ public class Main extends Application {
         line.setStrokeWidth(5);
         line.setStroke(Color.GREEN);
 
-        Image icon = new Image(getClass().getResourceAsStream("/images/crossIcon.png"));
+        Rectangle rectangle = new Rectangle();
+        rectangle.setX(100);
+        rectangle.setY(100);
+        rectangle.setWidth(200);
+        rectangle.setHeight(200);
+        rectangle.setFill(Color.GREEN);
+
+        Image icon = new Image("/images/crossIcon.png");
         stage.getIcons().add(icon);
         stage.setTitle("Decension");
         stage.setScene(scene);
@@ -50,6 +56,7 @@ public class Main extends Application {
 
         root.getChildren().add(text);
         root.getChildren().add(line);
+        root.getChildren().add(rectangle);
         stage.setScene(scene);
         stage.show();
     }
