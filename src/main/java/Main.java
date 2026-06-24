@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
@@ -42,9 +43,15 @@ public class Main extends Application {
         Rectangle rectangle = new Rectangle();
         rectangle.setX(100);
         rectangle.setY(100);
-        rectangle.setWidth(200);
-        rectangle.setHeight(200);
+        rectangle.setWidth(220);
+        rectangle.setHeight(220);
         rectangle.setFill(Color.GREEN);
+
+        Circle circle = new Circle();
+        circle.setCenterX(50);
+        circle.setCenterY(50);
+        circle.setRadius(10);
+        circle.setFill(Color.GREEN);
 
         Image icon = new Image("/images/crossIcon.png");
         stage.getIcons().add(icon);
@@ -54,9 +61,32 @@ public class Main extends Application {
         stage.setWidth(420);
         stage.setFullScreen(false);
 
+        scene.setOnKeyPressed(event -> {
+
+            switch (event.getCode()) {
+                case W:
+                    circle.setCenterY(circle.getCenterY() - 10);
+                    break;
+
+                case S:
+                    circle.setCenterY(circle.getCenterY() + 10);
+                    break;
+
+                case A:
+                    circle.setCenterX(circle.getCenterX() - 10);
+                    break;
+
+                case D:
+                    circle.setCenterX(circle.getCenterX() + 10);
+                    break;
+            }
+
+        });
+
         root.getChildren().add(text);
         root.getChildren().add(line);
         root.getChildren().add(rectangle);
+        root.getChildren().add(circle);
         stage.setScene(scene);
         stage.show();
     }
